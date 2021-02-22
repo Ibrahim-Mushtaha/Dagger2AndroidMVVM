@@ -5,7 +5,9 @@ import javax.inject.Inject
 
 class River {
 
-    @Inject
+
+    /* @Inject*/
+    // for view
     constructor(){
         Log.e("eee river ", "River")
     }

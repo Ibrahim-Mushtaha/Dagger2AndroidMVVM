@@ -4,7 +4,7 @@ import com.ix.ibrahim7.dagger2application.MainActivity
 import com.ix.ibrahim7.dagger2application.model.Coffee
 import dagger.Component
 
-@Component
+@Component(modules = [CoffeeModule::class])
 interface CoffeeComponent {
 
     fun getCoffee(): Coffee

@@ -5,12 +5,18 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class CoffeeModule {
+class CoffeeModule(var suger: Int) {
 
     @Provides
     fun provideRiver():River{
         Log.e("eee provideRiver ", "provideRiver")
         return River()
+    }
+
+    @Provides
+    fun provideSuger():Int{
+        Log.e("eee provideRiver ", "provideRiver")
+        return suger
     }
 
 }

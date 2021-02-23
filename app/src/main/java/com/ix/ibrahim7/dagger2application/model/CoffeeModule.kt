@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class CoffeeModule(var suger: Int) {
+class CoffeeModule() {
 
     @Provides
     fun provideRiver():River{
@@ -13,10 +13,10 @@ class CoffeeModule(var suger: Int) {
         return River()
     }
 
-    @Provides
+   /* @Provides
     fun provideSuger():Int{
         Log.e("eee provideRiver ", "provideRiver")
         return suger
     }
-
+*/
 }

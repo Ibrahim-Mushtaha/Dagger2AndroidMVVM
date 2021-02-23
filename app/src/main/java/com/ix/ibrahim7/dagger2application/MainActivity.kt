@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
 
         btnSave.setOnClickListener {
-            coffeeComponent = DaggerCoffeeComponent.builder().coffeeModule(CoffeeModule(etxtNumber.text.toString().toInt())).build()
+            coffeeComponent = DaggerCoffeeComponent.builder().suger(etxtNumber.text.toString().toInt()).build()
             coffeeComponent.inject(this)
             Log.e("eeee", coffee.getCoffeeCup())
         }

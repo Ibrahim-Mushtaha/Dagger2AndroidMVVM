@@ -3,10 +3,12 @@ package com.ix.ibrahim7.dagger2application.model
 import android.util.Log
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class CoffeeModule() {
 
+    @Singleton
     @Provides
     fun provideRiver():River{
         Log.e("eee provideRiver ", "provideRiver")

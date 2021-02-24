@@ -2,7 +2,9 @@ package com.ix.ibrahim7.dagger2application.model
 
 import android.util.Log
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class Coffee @Inject constructor(var farm: Farm,var river: River,var sugar:Int) {
 
     fun getCoffeeCup():String{

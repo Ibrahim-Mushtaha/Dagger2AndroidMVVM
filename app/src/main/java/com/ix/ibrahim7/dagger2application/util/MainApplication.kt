@@ -2,25 +2,26 @@ package com.ix.ibrahim7.dagger2application.util
 
 import android.app.Application
 import android.content.Context
+import com.ix.ibrahim7.dagger2application.model.AppComponent
 import com.ix.ibrahim7.dagger2application.model.CoffeeComponent
-import com.ix.ibrahim7.dagger2application.model.DaggerCoffeeComponent
+import com.ix.ibrahim7.dagger2application.model.DaggerAppComponent
 
 class MainApplication  : Application() {
 
-    private var coffeeComponent: CoffeeComponent? = null
+    private var appComponent: AppComponent? = null
 
     override fun onCreate() {
         super.onCreate()
-        coffeeComponent= appComponent
+        appComponent= instance
     }
 
-    val appComponent: CoffeeComponent by lazy {
-        DaggerCoffeeComponent.builder().suger(5).build()
+    val instance: AppComponent by lazy {
+        DaggerAppComponent.create()
     }
 
 
-     fun getCoffeeComponent():CoffeeComponent{
-        return coffeeComponent!!
+     fun getAppComponent():AppComponent{
+        return appComponent!!
     }
 
 

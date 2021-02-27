@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val appComponent = (application as MainApplication).getAppComponent()
 
         val coffeeComponent2 =
-            DaggerCoffeeComponent.builder().suger(4).appComponent(appComponent).build()
+            appComponent.getCoffeeComponentBuilder().suger(4).build()
         coffeeComponent2.apply {
             inject(this@MainActivity)
             getCoffee()

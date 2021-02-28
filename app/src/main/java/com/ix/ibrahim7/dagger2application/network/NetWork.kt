@@ -8,9 +8,7 @@ import javax.inject.Singleton
 class NetWork @Inject constructor() {
 
 
-    @Inject
     fun getAppModule(): AppModule {
-        Log.e("eee net name:", "espresso coffee")
         return AppModule()
     }
 

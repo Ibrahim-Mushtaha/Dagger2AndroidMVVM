@@ -63,11 +63,11 @@ class AppModule(var mApplication: Application? = null) {
 
     @Provides
     @Singleton
-    fun provideRetrofit(gson: Gson?, okHttpClient: OkHttpClient?): Retrofit? {
+    fun provideRetrofit(): Retrofit? {
+        Log.e("eee","Retrofit")
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(mBaseUrl)
-            .client(okHttpClient)
             .build()
     }
 }

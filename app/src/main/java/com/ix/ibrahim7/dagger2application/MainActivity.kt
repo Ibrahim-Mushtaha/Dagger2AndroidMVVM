@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.ix.ibrahim7.dagger2application.model.*
-import com.ix.ibrahim7.dagger2application.network.NetModule
 import com.ix.ibrahim7.dagger2application.util.MainApplication
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -31,9 +30,9 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val x=appComponent.getNetComponent().build().getNetModel().getAppModule().NetModule("wetwet")
+       // val x=appComponent.getNetComponent().build().getNetModel().getAppModule().NetModule("wetwet")
 
-        Log.e("eeee url",x.toString())
+
 
 
         Log.e("eeee", coffee.getCoffeeCup() + "\ncoffee 1=$coffee" + " || " + "\ncoffee 2=$coffee2" + "\nriver for coffee1=${coffee.river}" + " || " + "\nriver for coffee2=${coffee2.river}")

@@ -1,16 +1,26 @@
 package com.ix.ibrahim7.dagger2application.util
 
 import android.app.Application
+import android.util.Log
 import com.ix.ibrahim7.dagger2application.model.AppComponent
 import com.ix.ibrahim7.dagger2application.model.DaggerAppComponent
+import com.ix.ibrahim7.dagger2application.network.AppModule
+import com.ix.ibrahim7.dagger2application.other.*
 
-class MainApplication  : Application() {
+class MainApplication : Application() {
 
     private var appComponent: AppComponent? = null
+    private var appModel:AppModule? = null
 
     override fun onCreate() {
         super.onCreate()
-        appComponent= instance
+        appComponent = instance
+        appModel= appComponent!!.getNetComponent().build().getNetModel().getAppModule()
+
+        val x = appModel!!.NetModule(BASEURL)
+        appModel!!.provideRetrofit()
+
+        Log.e("eeee url", x)
     }
 
     val instance: AppComponent by lazy {
@@ -18,11 +28,9 @@ class MainApplication  : Application() {
     }
 
 
-     fun getAppComponent():AppComponent{
+    fun getAppComponent(): AppComponent {
         return appComponent!!
     }
-
-
 
 
 }

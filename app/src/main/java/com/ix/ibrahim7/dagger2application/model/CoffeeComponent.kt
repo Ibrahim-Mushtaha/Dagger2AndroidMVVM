@@ -1,11 +1,8 @@
 package com.ix.ibrahim7.dagger2application.model
 
 import com.ix.ibrahim7.dagger2application.MainActivity
-import com.ix.ibrahim7.dagger2application.network.NetModule
 import dagger.BindsInstance
-import dagger.Component
 import dagger.Subcomponent
-import javax.inject.Singleton
 
 @ActivityScope
 @Subcomponent()

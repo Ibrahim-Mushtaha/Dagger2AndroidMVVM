@@ -1,9 +1,7 @@
 package com.ix.ibrahim7.dagger2application.util
 
 import android.app.Application
-import android.content.Context
 import com.ix.ibrahim7.dagger2application.model.AppComponent
-import com.ix.ibrahim7.dagger2application.model.CoffeeComponent
 import com.ix.ibrahim7.dagger2application.model.DaggerAppComponent
 
 class MainApplication  : Application() {

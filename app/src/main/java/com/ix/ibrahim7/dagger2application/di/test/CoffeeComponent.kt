@@ -19,7 +19,6 @@ interface CoffeeComponent {
         @BindsInstance
         fun suger(suger:Int): Builder
         fun build(): CoffeeComponent
-        //fun appComponent(appComponent: AppComponent):Builder
     }
 
 }

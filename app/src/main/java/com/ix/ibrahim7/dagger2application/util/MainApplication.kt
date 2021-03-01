@@ -4,13 +4,14 @@ import android.app.Application
 import android.util.Log
 import com.ix.ibrahim7.dagger2application.model.AppComponent
 import com.ix.ibrahim7.dagger2application.model.DaggerAppComponent
-import com.ix.ibrahim7.dagger2application.network.RetrofitModule
+import com.ix.ibrahim7.dagger2application.di.RetrofitModule
 import com.ix.ibrahim7.dagger2application.other.*
+import dagger.android.support.DaggerAppCompatActivity_MembersInjector.create
 
 class MainApplication : Application() {
 
     private var appComponent: AppComponent? = null
-    private var retrofitModel:RetrofitModule? = null
+    private var retrofitModel: RetrofitModule? = null
 
     override fun onCreate() {
         super.onCreate()

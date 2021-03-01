@@ -1,4 +1,4 @@
-package com.ix.ibrahim7.dagger2application.network
+package com.ix.ibrahim7.dagger2application.di
 
 import javax.inject.Inject
 import javax.inject.Singleton

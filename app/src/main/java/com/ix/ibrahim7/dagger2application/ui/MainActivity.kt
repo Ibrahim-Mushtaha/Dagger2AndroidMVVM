@@ -3,7 +3,9 @@ package com.ix.ibrahim7.dagger2application.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProviders
 import com.ix.ibrahim7.dagger2application.R
+import com.ix.ibrahim7.dagger2application.di.factory.ViewModelFactory
 import com.ix.ibrahim7.dagger2application.model.*
 import com.ix.ibrahim7.dagger2application.ui.viewmodel.PostViewModel
 import com.ix.ibrahim7.dagger2application.util.MainApplication
@@ -18,7 +20,12 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var coffee2: Coffee
 
-    @Inject lateinit var postViewModel: PostViewModel
+    @Inject lateinit var viewModeFactory: ViewModelFactory<PostViewModel>
+
+    private val viewModel : PostViewModel by lazy {
+        ViewModelProviders.of(this, viewModeFactory).get(PostViewModel::class.java)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +40,11 @@ class MainActivity : AppCompatActivity() {
             getCoffee()
         }
 
-        Log.e("eee viewmodel",postViewModel.toString())
-        Log.e("eee viewmodel",postViewModel.postRepository.toString())
-        postViewModel.getpost()
+        Log.e("eee viewmodel",viewModel.toString())
+
+        viewModel.getpost()
 
 
-       // val x=appComponent.getNetComponent().build().getNetModel().getAppModule().NetModule("wetwet")
 
 
 
@@ -46,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         Log.e("eeee", coffee.getCoffeeCup() + "\ncoffee 1=$coffee" + " || " + "\ncoffee 2=$coffee2" + "\nriver for coffee1=${coffee.river}" + " || " + "\nriver for coffee2=${coffee2.river}")
 
         btnSave.setOnClickListener {
-            //coffeeComponent2.inject(this)
             Log.e("eeee", coffee.getCoffeeCup() + "coffee 1=$coffee" + " || " + "coffee 2=$coffee2")
         }
     }

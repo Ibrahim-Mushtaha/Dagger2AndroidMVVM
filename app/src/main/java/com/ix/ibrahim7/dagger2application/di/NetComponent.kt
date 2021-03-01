@@ -1,4 +1,4 @@
-package com.ix.ibrahim7.dagger2application.network
+package com.ix.ibrahim7.dagger2application.di
 
 import com.ix.ibrahim7.dagger2application.model.ActivityScope
 import dagger.Subcomponent

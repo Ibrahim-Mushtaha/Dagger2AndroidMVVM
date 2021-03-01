@@ -7,8 +7,6 @@ import dagger.Subcomponent
 @Subcomponent()
 interface NetComponent {
 
-   fun getNetModel(): NetWork
-
     @Subcomponent.Builder
     interface Builder{
 

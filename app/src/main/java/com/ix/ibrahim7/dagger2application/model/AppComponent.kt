@@ -15,7 +15,7 @@ import javax.inject.Singleton
 interface AppComponent : AndroidInjector<MainApplication> {
 
     fun getCoffeeComponentBuilder(): CoffeeComponent.Builder
-    fun getNetComponent(): NetComponent.Builder
+    //fun getNetComponent(): NetComponent.Builder
 
 
 

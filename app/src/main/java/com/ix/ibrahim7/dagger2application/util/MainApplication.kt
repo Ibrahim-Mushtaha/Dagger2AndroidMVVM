@@ -11,20 +11,17 @@ import com.ix.ibrahim7.dagger2application.other.*
 class MainApplication : Application() {
 
     private var appComponent: AppComponent? = null
-     var retrofitModel: RetrofitModule? = null
-
 
     lateinit var api: Api
 
     override fun onCreate() {
         super.onCreate()
         appComponent = instance
-        retrofitModel= appComponent!!.getNetComponent().build().getNetModel().getAppModule()
 
-        val x = retrofitModel!!.NetModule(BASEURL)
-        val retrofit =retrofitModel!!.provideRetrofit()
+        val url = RetrofitModule.NetModule(BASEURL)
+        val retrofit =RetrofitModule.provideRetrofit()
         api = retrofit!!.create(Api::class.java)
-        Log.e("eeee url", x)
+        Log.e("eeee url", url)
     }
 
     val instance: AppComponent by lazy {

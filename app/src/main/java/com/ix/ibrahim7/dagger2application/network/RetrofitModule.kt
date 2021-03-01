@@ -17,7 +17,7 @@ import javax.inject.Singleton
 
 
 @Module
-class AppModule(var mApplication: Application? = null) {
+class RetrofitModule(var mApplication: Application? = null) {
 
     var mBaseUrl: String? = null
 

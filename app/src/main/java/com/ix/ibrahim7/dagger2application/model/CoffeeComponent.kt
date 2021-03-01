@@ -1,6 +1,6 @@
 package com.ix.ibrahim7.dagger2application.model
 
-import com.ix.ibrahim7.dagger2application.MainActivity
+import com.ix.ibrahim7.dagger2application.ui.MainActivity
 import dagger.BindsInstance
 import dagger.Subcomponent
 

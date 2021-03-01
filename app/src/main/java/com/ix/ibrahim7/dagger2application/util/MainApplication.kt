@@ -4,21 +4,21 @@ import android.app.Application
 import android.util.Log
 import com.ix.ibrahim7.dagger2application.model.AppComponent
 import com.ix.ibrahim7.dagger2application.model.DaggerAppComponent
-import com.ix.ibrahim7.dagger2application.network.AppModule
+import com.ix.ibrahim7.dagger2application.network.RetrofitModule
 import com.ix.ibrahim7.dagger2application.other.*
 
 class MainApplication : Application() {
 
     private var appComponent: AppComponent? = null
-    private var appModel:AppModule? = null
+    private var retrofitModel:RetrofitModule? = null
 
     override fun onCreate() {
         super.onCreate()
         appComponent = instance
-        appModel= appComponent!!.getNetComponent().build().getNetModel().getAppModule()
+        retrofitModel= appComponent!!.getNetComponent().build().getNetModel().getAppModule()
 
-        val x = appModel!!.NetModule(BASEURL)
-        appModel!!.provideRetrofit()
+        val x = retrofitModel!!.NetModule(BASEURL)
+        retrofitModel!!.provideRetrofit()
 
         Log.e("eeee url", x)
     }
@@ -31,6 +31,10 @@ class MainApplication : Application() {
     fun getAppComponent(): AppComponent {
         return appComponent!!
     }
+
+  /*  fun getApiInstance():RetrofitModule{
+        return appComponent!!.getNetComponent().build().getNetModel().getAppModule()
+    }*/
 
 
 }

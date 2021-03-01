@@ -1,9 +1,11 @@
-package com.ix.ibrahim7.dagger2application
+package com.ix.ibrahim7.dagger2application.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.ix.ibrahim7.dagger2application.R
 import com.ix.ibrahim7.dagger2application.model.*
+import com.ix.ibrahim7.dagger2application.ui.viewmodel.PostViewModel
 import com.ix.ibrahim7.dagger2application.util.MainApplication
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -15,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var coffee2: Coffee
+
+    @Inject lateinit var postViewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             inject(this@MainActivity)
             getCoffee()
         }
+
+        Log.e("eee viewmodel",postViewModel.toString())
+        Log.e("eee viewmodel",postViewModel.postRepository.toString())
+        postViewModel.getpost()
 
 
        // val x=appComponent.getNetComponent().build().getNetModel().getAppModule().NetModule("wetwet")

@@ -1,4 +1,4 @@
-package com.ix.ibrahim7.dagger2application.model;
+package com.ix.ibrahim7.dagger2application.di.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

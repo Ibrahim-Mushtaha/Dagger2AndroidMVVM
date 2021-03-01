@@ -5,13 +5,16 @@ import android.util.Log
 import com.ix.ibrahim7.dagger2application.model.AppComponent
 import com.ix.ibrahim7.dagger2application.model.DaggerAppComponent
 import com.ix.ibrahim7.dagger2application.di.RetrofitModule
+import com.ix.ibrahim7.dagger2application.network.Api
 import com.ix.ibrahim7.dagger2application.other.*
-import dagger.android.support.DaggerAppCompatActivity_MembersInjector.create
 
 class MainApplication : Application() {
 
     private var appComponent: AppComponent? = null
-    private var retrofitModel: RetrofitModule? = null
+     var retrofitModel: RetrofitModule? = null
+
+
+    lateinit var api: Api
 
     override fun onCreate() {
         super.onCreate()
@@ -19,8 +22,8 @@ class MainApplication : Application() {
         retrofitModel= appComponent!!.getNetComponent().build().getNetModel().getAppModule()
 
         val x = retrofitModel!!.NetModule(BASEURL)
-        retrofitModel!!.provideRetrofit()
-
+        val retrofit =retrofitModel!!.provideRetrofit()
+        api = retrofit!!.create(Api::class.java)
         Log.e("eeee url", x)
     }
 
@@ -33,9 +36,7 @@ class MainApplication : Application() {
         return appComponent!!
     }
 
-  /*  fun getApiInstance():RetrofitModule{
-        return appComponent!!.getNetComponent().build().getNetModel().getAppModule()
-    }*/
+
 
 
 }

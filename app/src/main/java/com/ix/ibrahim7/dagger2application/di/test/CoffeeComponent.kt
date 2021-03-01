@@ -1,5 +1,6 @@
-package com.ix.ibrahim7.dagger2application.model
+package com.ix.ibrahim7.dagger2application.di.test
 
+import com.ix.ibrahim7.dagger2application.di.annotations.ActivityScope
 import com.ix.ibrahim7.dagger2application.ui.MainActivity
 import dagger.BindsInstance
 import dagger.Subcomponent
@@ -16,8 +17,8 @@ interface CoffeeComponent {
     interface Builder{
 
         @BindsInstance
-        fun suger(suger:Int):Builder
-        fun build():CoffeeComponent
+        fun suger(suger:Int): Builder
+        fun build(): CoffeeComponent
         //fun appComponent(appComponent: AppComponent):Builder
     }
 

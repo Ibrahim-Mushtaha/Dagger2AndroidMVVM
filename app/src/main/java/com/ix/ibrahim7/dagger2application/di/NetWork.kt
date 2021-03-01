@@ -8,7 +8,7 @@ class NetWork @Inject constructor() {
 
 
     fun getAppModule(): RetrofitModule {
-        return RetrofitModule()
+        return RetrofitModule
     }
 
 }

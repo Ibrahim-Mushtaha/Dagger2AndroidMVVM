@@ -7,6 +7,7 @@ import android.util.Log
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.ix.ibrahim7.dagger2application.network.Api
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -17,9 +18,10 @@ import javax.inject.Singleton
 
 
 @Module
-class RetrofitModule(var mApplication: Application? = null) {
+object RetrofitModule {
 
     var mBaseUrl: String? = null
+    lateinit var retrofit: Retrofit
 
     var x=1
     // Constructor needs one parameter to instantiate.
@@ -65,9 +67,17 @@ class RetrofitModule(var mApplication: Application? = null) {
     @Singleton
     fun provideRetrofit(): Retrofit? {
         Log.e("eee","Retrofit")
-        return Retrofit.Builder()
+        retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(mBaseUrl)
             .build()
+        return retrofit
     }
+
+    @Provides
+    @Singleton
+    fun getApiInstance(): Api? {
+        return provideRetrofit()!!.create(Api::class.java)
+    }
+
 }

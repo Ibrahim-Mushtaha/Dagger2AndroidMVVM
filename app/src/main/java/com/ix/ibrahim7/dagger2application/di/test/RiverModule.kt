@@ -1,6 +1,8 @@
-package com.ix.ibrahim7.dagger2application.model
+package com.ix.ibrahim7.dagger2application.di.test
 
 import android.util.Log
+import com.ix.ibrahim7.dagger2application.di.test.River
+import com.ix.ibrahim7.dagger2application.other.TAG
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,8 +12,8 @@ class RiverModule() {
 
     @Singleton
     @Provides
-    fun provideRiver():River{
-        Log.e("eee provideRiver ", "provideRiver")
+    fun provideRiver(): River {
+        Log.e("$TAG provideRiver ", "provideRiver")
         return River()
     }
 

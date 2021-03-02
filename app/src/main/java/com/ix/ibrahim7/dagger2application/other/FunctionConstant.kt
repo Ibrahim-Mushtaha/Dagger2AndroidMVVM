@@ -2,8 +2,10 @@ package com.ix.ibrahim7.dagger2application.other
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.Activity
 import android.view.View
-
+import android.widget.ImageView
+import com.ix.ibrahim7.dagger2application.di.module.GlideModule
 
 
 fun View.setItemAnimation(itemView: View, i: Int,on_attach:Boolean =true) {
@@ -21,4 +23,8 @@ fun View.setItemAnimation(itemView: View, i: Int,on_attach:Boolean =true) {
     animator.duration = 500
     animatorSet.play(animator)
     animator.start()
+}
+
+fun View.getImage(url:String,imageView: ImageView) {
+    GlideModule.provideGlide(this)!!.load(url).into(imageView)
 }

@@ -12,9 +12,11 @@ import com.ix.ibrahim7.dagger2application.adapter.PostAdapter
 import com.ix.ibrahim7.dagger2application.databinding.FragmentPostBinding
 import com.ix.ibrahim7.dagger2application.di.factory.ViewModelFactory
 import com.ix.ibrahim7.dagger2application.other.TAG
+import com.ix.ibrahim7.dagger2application.ui.fragment.dialog.CountryDialog
 import com.ix.ibrahim7.dagger2application.ui.viewmodel.PostViewModel
 import com.ix.ibrahim7.dagger2application.util.MainApplication
 import com.ix.ibrahim7.dagger2application.util.Resource
+import kotlinx.android.synthetic.main.fragment_post.*
 import javax.inject.Inject
 
 
@@ -55,6 +57,9 @@ class PostFragment : Fragment() {
             adapter = post_adapter
         }
 
+        mBinding.btnShowCountry.setOnClickListener {
+            CountryDialog().show(childFragmentManager,"")
+        }
 
         viewModel.getpost()
 

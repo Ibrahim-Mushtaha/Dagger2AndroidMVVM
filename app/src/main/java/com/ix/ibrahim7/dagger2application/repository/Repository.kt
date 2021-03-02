@@ -6,10 +6,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PostRepository @Inject constructor() {
+class Repository @Inject constructor() {
 
 
-    suspend fun getPost2() = RetrofitModule.getApiInstance()!!.getPost()
+    suspend fun getPost2() = RetrofitModule.getPostApiInstance()!!.getPost()
+    suspend fun getCountry() = RetrofitModule.getCounrtyApiInstance()!!.getCountry()
 
 
     fun getPost(){

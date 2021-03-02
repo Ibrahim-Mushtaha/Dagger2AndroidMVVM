@@ -6,40 +6,45 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ix.ibrahim7.dagger2application.R
-import com.ix.ibrahim7.dagger2application.databinding.ItemPostBinding
-import com.ix.ibrahim7.dagger2application.model.post.PostItem
+import com.ix.ibrahim7.dagger2application.databinding.ItemCountryBinding
+import com.ix.ibrahim7.dagger2application.model.country.CountryItem
+import com.ix.ibrahim7.dagger2application.other.getImage
 import com.ix.ibrahim7.dagger2application.other.setItemAnimation
+import kotlinx.android.synthetic.main.item_country.view.*
 
-class PostAdapter(var data: ArrayList<PostItem>) :
-    RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class CountryAdapter(var data: ArrayList<CountryItem>) :
+    RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     private var on_attach = true
 
-    class PostViewHolder(val item: ItemPostBinding) : RecyclerView.ViewHolder(item.root) {
+    class CountryViewHolder(val item: ItemCountryBinding) : RecyclerView.ViewHolder(item.root) {
 
-        fun bind(n: PostItem) {
-            item.post = n
+        fun bind(n: CountryItem) {
+            item.country = n
             item.executePendingBindings()
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val itemView_layout: ItemPostBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
-            R.layout.item_post, parent, false)
-        return PostViewHolder(itemView_layout)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
+        val itemView_layout: ItemCountryBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
+            R.layout.item_country, parent, false)
+        return CountryViewHolder(itemView_layout)
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
 
         val currentitem = data[position]
         holder.item.root.apply {
            setItemAnimation(this, position,on_attach)
+            getImage(currentitem.flag!!,tvImage)
         }
+
+
         holder.bind(currentitem)
     }
 

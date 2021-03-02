@@ -12,18 +12,13 @@ class MainApplication : Application() {
 
     private var appComponent: AppComponent? = null
 
-    lateinit var api: Api
-
     override fun onCreate() {
         super.onCreate()
 
         appComponent = instance
 
-        val url = RetrofitModule.NetModule(BASEURL)
-        val retrofit =
-            RetrofitModule.provideRetrofit()
-        api = retrofit!!.create(Api::class.java)
-        Log.e("eeee url", url)
+       /* RetrofitModule.provideRetrofit(BASEURL)
+        RetrofitModule.provideRetrofit(COUNRTYURL)*/
     }
 
     val instance: AppComponent by lazy {
@@ -31,11 +26,9 @@ class MainApplication : Application() {
     }
 
 
-
     fun getAppComponent(): AppComponent {
         return appComponent!!
     }
-
 
 
 }

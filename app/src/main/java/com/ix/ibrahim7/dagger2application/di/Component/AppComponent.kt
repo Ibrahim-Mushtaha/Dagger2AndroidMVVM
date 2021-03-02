@@ -1,6 +1,7 @@
 package com.ix.ibrahim7.dagger2application.di.Component
 
 import com.ix.ibrahim7.dagger2application.di.Component.FragmentComponent
+import com.ix.ibrahim7.dagger2application.di.module.GlideModule
 import com.ix.ibrahim7.dagger2application.di.module.RetrofitModule
 import com.ix.ibrahim7.dagger2application.di.test.CoffeeComponent
 import com.ix.ibrahim7.dagger2application.di.test.RiverModule
@@ -11,7 +12,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [RiverModule::class, RetrofitModule::class])
+@Component(modules = [RiverModule::class, RetrofitModule::class, GlideModule::class])
 interface AppComponent : AndroidInjector<MainApplication> {
 
     fun getCoffeeComponentBuilder(): CoffeeComponent.Builder

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="Post"
-            type="com.ix.ibrahim7.dagger2application.model.post.PostItem" />
+            name="Country"
+            type="com.ix.ibrahim7.dagger2application.model.country.CountryItem" />
 
     </data>
 
@@ -24,20 +24,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/tvImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.542" />
+
             <TextView
                 android:id="@+id/txt_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{Post.title}"
-                android:textColor="#373737"
-                android:layout_marginStart="16sp"
                 android:layout_marginEnd="16sp"
-                android:textSize="16sp"
                 android:ellipsize="end"
                 android:maxLines="2"
+                android:text="@{Country.name}"
+                android:textColor="#373737"
+                android:textSize="16sp"
+                android:layout_marginStart="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvImage"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="name" />
 

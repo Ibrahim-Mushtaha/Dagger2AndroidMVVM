@@ -1,13 +1,19 @@
 package com.ix.ibrahim7.dagger2application.di.module
 
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.Log
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.ix.ibrahim7.dagger2application.R
 import com.ix.ibrahim7.dagger2application.network.Api
+import com.ix.ibrahim7.dagger2application.other.*
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -62,19 +68,33 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit? {
-        Log.e("eee","Retrofit")
-        retrofit = Retrofit.Builder()
+    fun provideRetrofit(url:String)=
+        Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(mBaseUrl)
+            .baseUrl(url)
             .build()
-        return retrofit
+
+    @Provides
+    @Singleton
+    fun getPostApiInstance(): Api? {
+        return provideRetrofit(BASEURL).create(Api::class.java)
     }
 
     @Provides
     @Singleton
-    fun getApiInstance(): Api? {
-        return provideRetrofit()!!.create(Api::class.java)
+    fun getCounrtyApiInstance(): Api? {
+        return provideRetrofit(COUNRTYURL).create(Api::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideGlideInstance(
+        context: Context
+    ) = Glide.with(context).setDefaultRequestOptions(
+        RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+           .error(R.drawable.ic_launcher_background)
+            .diskCacheStrategy(DiskCacheStrategy.DATA)
+    )
 
 }

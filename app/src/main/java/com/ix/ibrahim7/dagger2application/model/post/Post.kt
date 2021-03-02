@@ -1,4 +1,4 @@
-package com.ix.ibrahim7.dagger2application.model
+package com.ix.ibrahim7.dagger2application.model.post
 
 import com.google.gson.annotations.SerializedName
 

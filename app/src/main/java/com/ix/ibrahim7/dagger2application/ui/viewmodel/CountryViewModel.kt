@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ix.ibrahim7.dagger2application.model.post.PostItem
+import com.ix.ibrahim7.dagger2application.model.country.Country
 import com.ix.ibrahim7.dagger2application.other.TAG
 import com.ix.ibrahim7.dagger2application.repository.Repository
 import com.ix.ibrahim7.dagger2application.util.Resource
@@ -17,39 +17,36 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PostViewModel @Inject constructor(
+class CountryViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
 
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-    val dataPostLiveData = MutableLiveData<Resource<List<PostItem>>>()
+    val dataCountrysLiveData = MutableLiveData<Resource<Country>>()
 
-    init {
-        Log.e("$TAG repository",repository.toString())
-    }
 
-    private suspend fun getPosts() {
-        dataPostLiveData.postValue(Resource.Loading())
+    private suspend fun getCountrys() {
+        dataCountrysLiveData.postValue(Resource.Loading())
         try {
             val response = repository
-                .getPost2()
-            dataPostLiveData.postValue(getPost(response))
+                .getCountry()
+            dataCountrysLiveData.postValue(getCountry(response))
         } catch (t: Throwable) {
             when (t) {
                 is IOException -> {
-                    dataPostLiveData.postValue(Resource.Error(t.message.toString()))
+                    dataCountrysLiveData.postValue(Resource.Error(t.message.toString()))
                 }
                 else -> {
-                    dataPostLiveData.postValue(Resource.Error(t.message.toString()))
+                    dataCountrysLiveData.postValue(Resource.Error(t.message.toString()))
                 }
 
             }
         }
     }
 
-    private fun getPost(response: Response<List<PostItem>>):
-            Resource<List<PostItem>> {
+    private fun getCountry(response: Response<Country>):
+            Resource<Country> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
@@ -59,13 +56,14 @@ class PostViewModel @Inject constructor(
     }
 
 
-    fun getPost() =
+    fun getCountry() =
         viewModelScope.launch(dispatcher) {
-            getPosts()
+            getCountrys()
         }
 
     init {
-        getPost()
+        Log.e("$TAG repository",repository.toString())
+        getCountry()
     }
 
     fun getpost() = repository.getPost()

@@ -77,6 +77,7 @@ class CountryDialog : BottomSheetDialogFragment(){
                         country_Adapter.apply {
                             this.data.clear()
                             this.data.addAll(data)
+                            mBinding.loadingProgressBar.visibility=View.GONE
                             notifyDataSetChanged()
                         }
                         Log.e("$TAG posts", it.data.toString())
@@ -84,10 +85,11 @@ class CountryDialog : BottomSheetDialogFragment(){
                 }
 
                 is Resource.Error -> {
+                    mBinding.loadingProgressBar.visibility=View.INVISIBLE
                     Log.e("$TAG Error", it.message.toString())
                 }
                 is Resource.Loading -> {
-
+                    mBinding.loadingProgressBar.visibility=View.VISIBLE
                 }
             }
         })

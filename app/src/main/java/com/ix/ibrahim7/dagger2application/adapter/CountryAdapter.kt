@@ -7,8 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ix.ibrahim7.dagger2application.R
 import com.ix.ibrahim7.dagger2application.databinding.ItemCountryBinding
+import com.ix.ibrahim7.dagger2application.di.module.GlideModule
+import com.ix.ibrahim7.dagger2application.di.module.GlideModule.fetchSvg
 import com.ix.ibrahim7.dagger2application.model.country.CountryItem
-import com.ix.ibrahim7.dagger2application.other.getImage
 import com.ix.ibrahim7.dagger2application.other.setItemAnimation
 import kotlinx.android.synthetic.main.item_country.view.*
 
@@ -41,7 +42,8 @@ class CountryAdapter(var data: ArrayList<CountryItem>) :
         val currentitem = data[position]
         holder.item.root.apply {
            setItemAnimation(this, position,on_attach)
-            getImage(currentitem.flag!!,tvImage)
+            //context.getImage(currentitem.flag!!,tvImage)
+            context.fetchSvg(currentitem.flag,tvImage)
         }
 
 
@@ -51,7 +53,6 @@ class CountryAdapter(var data: ArrayList<CountryItem>) :
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                Log.d("eee", "onScrollStateChanged: Called $newState")
                 on_attach = false
                 super.onScrollStateChanged(recyclerView, newState)
             }

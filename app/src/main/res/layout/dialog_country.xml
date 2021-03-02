@@ -28,14 +28,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/purple_700"
+            android:visibility="invisible"
+            android:layout_marginTop="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rclistcountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:orientation="vertical"
+            android:minHeight="160dp"
+            android:layout_marginTop="6dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/loadingProgressBar"
             tools:layout_editor_absoluteX="0dp"
             tools:listitem="@layout/item_country" />
 

@@ -3,9 +3,18 @@ package com.ix.ibrahim7.dagger2application.other
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.Activity
+import android.content.Context
+import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.ix.ibrahim7.dagger2application.di.module.GlideModule
+import com.ix.ibrahim7.dagger2application.di.module.GlideModule.fetchSvg
+import com.ix.ibrahim7.dagger2application.di.module.GlideModule.provideGlide
 
 
 fun View.setItemAnimation(itemView: View, i: Int,on_attach:Boolean =true) {
@@ -25,6 +34,33 @@ fun View.setItemAnimation(itemView: View, i: Int,on_attach:Boolean =true) {
     animator.start()
 }
 
-fun View.getImage(url:String,imageView: ImageView) {
-    GlideModule.provideGlide(this)!!.load(url).into(imageView)
+fun Context.getGlideImage(url:String,imageView: ImageView) {
+    this.provideGlide()!!.load(url).listener(object :RequestListener<Drawable>{
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: Target<Drawable>?,
+            isFirstResource: Boolean
+        ): Boolean {
+            Log.e("eee image failed",e!!.message.toString())
+            return false
+        }
+
+        override fun onResourceReady(
+            resource: Drawable?,
+            model: Any?,
+            target: Target<Drawable>?,
+            dataSource: DataSource?,
+            isFirstResource: Boolean
+        ): Boolean {
+            Log.e("eee image","done")
+            return false
+        }
+
+    }).into(imageView)
+}
+
+
+fun Context.getSvgImage(url:String,imageView: ImageView) {
+    this.fetchSvg(url,imageView)
 }

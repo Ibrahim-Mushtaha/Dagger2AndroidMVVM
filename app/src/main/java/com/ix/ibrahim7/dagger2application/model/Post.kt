@@ -1,10 +1,6 @@
-package com.ix.ibrahim7.dagger2application.model.post
+package com.ix.ibrahim7.dagger2application.model
 
 import com.google.gson.annotations.SerializedName
-
-data class AllPost(
-    var  list:ArrayList<PostItem>?
-)
 
 data class PostItem(
     @SerializedName("userId")

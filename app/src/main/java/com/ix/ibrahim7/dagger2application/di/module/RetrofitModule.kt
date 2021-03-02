@@ -1,4 +1,4 @@
-package com.ix.ibrahim7.dagger2application.di
+package com.ix.ibrahim7.dagger2application.di.module
 
 import android.app.Application
 import android.content.SharedPreferences
@@ -23,11 +23,8 @@ object RetrofitModule {
     var mBaseUrl: String? = null
     lateinit var retrofit: Retrofit
 
-    var x=1
     // Constructor needs one parameter to instantiate.
     fun NetModule(baseUrl: String?):String {
-        x++
-        Log.e("eee xx" ,x.toString())
         mBaseUrl = baseUrl
         return mBaseUrl!!
     }

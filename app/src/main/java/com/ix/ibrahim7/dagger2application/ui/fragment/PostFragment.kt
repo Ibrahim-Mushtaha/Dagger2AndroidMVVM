@@ -47,7 +47,7 @@ class PostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         (requireActivity().application as MainApplication).getAppComponent().apply {
-            getCoffeeComponentBuilder().suger().build().injectfragment(this@PostFragment)
+            getFragmentComponent().build().injectfragment(this@PostFragment)
         }
 
 

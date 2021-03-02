@@ -1,7 +1,7 @@
 package com.ix.ibrahim7.dagger2application.repository
 
 import android.util.Log
-import com.ix.ibrahim7.dagger2application.di.RetrofitModule
+import com.ix.ibrahim7.dagger2application.di.module.RetrofitModule
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,7 +14,8 @@ class PostRepository @Inject constructor() {
 
     fun getPost(){
         Log.e(
-            "eeee RetrofitModule",RetrofitModule.mBaseUrl.toString())
+            "eeee RetrofitModule",
+            RetrofitModule.mBaseUrl.toString())
         Log.e("eee post","post 1")
     }
 }

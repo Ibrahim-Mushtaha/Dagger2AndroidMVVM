@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ix.ibrahim7.dagger2application.model.post.PostItem
+import com.ix.ibrahim7.dagger2application.model.PostItem
 import com.ix.ibrahim7.dagger2application.other.TAG
 import com.ix.ibrahim7.dagger2application.repository.PostRepository
 import com.ix.ibrahim7.dagger2application.util.Resource

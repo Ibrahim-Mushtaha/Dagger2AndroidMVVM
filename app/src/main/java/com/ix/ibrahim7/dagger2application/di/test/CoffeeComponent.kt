@@ -7,13 +7,12 @@ import dagger.BindsInstance
 import dagger.Subcomponent
 
 @ActivityScope
-@Subcomponent()
+@Subcomponent
 interface CoffeeComponent {
 
     fun getCoffee(): Coffee
 
     fun inject(mainActivity: MainActivity)
-    fun injectfragment(postFragment: PostFragment)
 
     @Subcomponent.Builder
     interface Builder{

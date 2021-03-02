@@ -1,7 +1,7 @@
-package com.ix.ibrahim7.dagger2application.model
+package com.ix.ibrahim7.dagger2application.di.Component
 
-import com.ix.ibrahim7.dagger2application.di.NetComponent
-import com.ix.ibrahim7.dagger2application.di.RetrofitModule
+import com.ix.ibrahim7.dagger2application.di.Component.FragmentComponent
+import com.ix.ibrahim7.dagger2application.di.module.RetrofitModule
 import com.ix.ibrahim7.dagger2application.di.test.CoffeeComponent
 import com.ix.ibrahim7.dagger2application.di.test.RiverModule
 import com.ix.ibrahim7.dagger2application.util.MainApplication
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 interface AppComponent : AndroidInjector<MainApplication> {
 
     fun getCoffeeComponentBuilder(): CoffeeComponent.Builder
-    //fun getNetComponent(): NetComponent.Builder
+    fun getFragmentComponent(): FragmentComponent.Builder
 
 
 

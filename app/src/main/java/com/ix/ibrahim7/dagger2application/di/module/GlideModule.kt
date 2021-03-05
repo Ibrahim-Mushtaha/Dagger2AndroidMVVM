@@ -23,7 +23,7 @@ object GlideModule {
 
 
 
-    private var httpClient: OkHttpClient? = null
+     var httpClient: OkHttpClient? = null
 
     @Provides
     fun Context.provideGlide(): RequestManager? {

@@ -6,6 +6,7 @@ import com.ix.ibrahim7.dagger2application.model.country.Currency
 import com.ix.ibrahim7.dagger2application.model.country.Language
 import com.ix.ibrahim7.dagger2application.model.country.RegionalBloc
 import com.ix.ibrahim7.dagger2application.model.country.Translations
+import com.ix.ibrahim7.dagger2application.model.listener.OnClickListener
 
 data class CountryItem(
     @SerializedName("alpha2Code")
@@ -56,4 +57,4 @@ data class CountryItem(
     val topLevelDomain: List<String>?,
     @SerializedName("translations")
     val translations: Translations?
-)
+): OnClickListener()

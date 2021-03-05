@@ -1,35 +1,29 @@
 package com.ix.ibrahim7.dagger2application.ui.fragment.dialog
 
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.observe
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
-import com.ix.ibrahim7.dagger2application.adapter.CountryAdapter
+import com.ix.ibrahim7.dagger2application.R
+import com.ix.ibrahim7.dagger2application.adapter.GenericAdapter
 import com.ix.ibrahim7.dagger2application.databinding.DialogCountryBinding
 import com.ix.ibrahim7.dagger2application.di.factory.ViewModelFactory
+import com.ix.ibrahim7.dagger2application.model.country.CountryItem
 import com.ix.ibrahim7.dagger2application.other.TAG
 import com.ix.ibrahim7.dagger2application.ui.viewmodel.CountryViewModel
-import com.ix.ibrahim7.dagger2application.ui.viewmodel.PostViewModel
 import com.ix.ibrahim7.dagger2application.util.MainApplication
 import com.ix.ibrahim7.dagger2application.util.Resource
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
-class CountryDialog : BottomSheetDialogFragment(){
+class CountryDialog : BottomSheetDialogFragment(),GenericAdapter.OnListItemViewClickListener{
 
     private lateinit var mBinding: DialogCountryBinding
 
-    private val country_Adapter by lazy {
-        CountryAdapter(ArrayList())
+    private val countryAdapter by lazy {
+        GenericAdapter<CountryItem>(R.layout.item_country, BR.Country)
     }
 
     @Inject
@@ -63,7 +57,7 @@ class CountryDialog : BottomSheetDialogFragment(){
         mBinding.apply {
 
             rclistcountry.apply {
-                adapter = country_Adapter
+                adapter = countryAdapter
             }
 
 
@@ -74,9 +68,8 @@ class CountryDialog : BottomSheetDialogFragment(){
             when (it) {
                 is Resource.Success -> {
                     it.data?.let { data ->
-                        country_Adapter.apply {
-                            this.data.clear()
-                            this.data.addAll(data)
+                        countryAdapter.apply {
+                            this.addItems(data)
                             mBinding.loadingProgressBar.visibility=View.GONE
                             notifyDataSetChanged()
                         }
@@ -104,11 +97,9 @@ class CountryDialog : BottomSheetDialogFragment(){
         )
     }
 
+    override fun onClick(view: View, position: Int, type: Int) {
 
-
-
-
-
+    }
 
 
 }

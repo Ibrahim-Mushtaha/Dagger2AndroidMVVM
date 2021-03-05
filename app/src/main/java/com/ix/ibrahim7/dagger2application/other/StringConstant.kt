@@ -7,3 +7,4 @@ const val TAG = "eee"
 const val POSTS = "posts"
 const val ALL = "all"
 const val DURATION = 100
+const val ALPHA = "alpha"

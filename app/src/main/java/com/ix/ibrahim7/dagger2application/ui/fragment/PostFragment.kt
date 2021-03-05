@@ -1,26 +1,32 @@
 package com.ix.ibrahim7.dagger2application.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.ix.ibrahim7.dagger2application.R
+import com.ix.ibrahim7.dagger2application.adapter.GenericAdapter
 import com.ix.ibrahim7.dagger2application.adapter.PostAdapter
 import com.ix.ibrahim7.dagger2application.databinding.FragmentPostBinding
 import com.ix.ibrahim7.dagger2application.di.factory.ViewModelFactory
+import com.ix.ibrahim7.dagger2application.model.post.PostItem
 import com.ix.ibrahim7.dagger2application.other.TAG
 import com.ix.ibrahim7.dagger2application.ui.fragment.dialog.CountryDialog
 import com.ix.ibrahim7.dagger2application.ui.viewmodel.PostViewModel
 import com.ix.ibrahim7.dagger2application.util.MainApplication
 import com.ix.ibrahim7.dagger2application.util.Resource
 import kotlinx.android.synthetic.main.fragment_post.*
+import androidx.databinding.library.baseAdapters.BR
 import javax.inject.Inject
 
 
-class PostFragment : Fragment() {
+class PostFragment : Fragment() ,GenericAdapter.OnListItemViewClickListener{
 
     lateinit var mBinding:FragmentPostBinding
 
@@ -31,8 +37,12 @@ class PostFragment : Fragment() {
         ViewModelProviders.of(requireActivity(), viewModeFactory).get(PostViewModel::class.java)
     }
 
-    private val post_adapter by lazy {
+    /*private val post_adapter by lazy {
         PostAdapter(ArrayList())
+    }*/
+
+    private val post_adapter by lazy {
+        GenericAdapter<PostItem>(R.layout.item_post,BR.Post)
     }
 
 
@@ -62,15 +72,14 @@ class PostFragment : Fragment() {
         }
 
         viewModel.getpost()
-
+        post_adapter.setOnListItemViewClickListener(this)
 
         viewModel.dataPostLiveData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
                     it.data?.let { data ->
                         post_adapter.apply {
-                            this.data.clear()
-                            this.data.addAll(data)
+                            this.addItems(data)
                             mBinding.loadingProgressBar.visibility=View.INVISIBLE
                             notifyDataSetChanged()
                         }
@@ -91,6 +100,14 @@ class PostFragment : Fragment() {
 
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onClick(view: View, position: Int,type:Int) {
+       when(type){
+           1->{
+             Toast.makeText(requireContext(),post_adapter.data[position].title,Toast.LENGTH_SHORT).show()
+           }
+       }
     }
 
 }

@@ -18,7 +18,8 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         app:cardCornerRadius="4dp"
-        app:cardElevation="4dp">
+        app:cardElevation="4dp"
+        android:onClick="@{(v)-> Post.onListItemViewClickListener.onClick(v, Post.adapterPosition,1) }">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
